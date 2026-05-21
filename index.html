@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Каталог фильмов с отзывами</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./index.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">🎬 Каталог фильмов с отзывами</div>
+        <div id="authSection"></div>
+    </header>
+
+    <nav class="tabs">
+        <button class="tab-btn active" data-tab="catalog">
+            📋 Каталог
+        </button>
+        <button class="tab-btn" data-tab="favorites">❤️ Избранное</button>
+        <button class="tab-btn" data-tab="profile">👤 Мой профиль</button>
+    </nav>
+
+    <main id="catalogTab" class="tab-content">
+        <section class="controls">
+            <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="🔍 Поиск фильма..."
+            />
+            <select id="genreFilter" class="genre-select">
+                <option value="all">📽 Все жанры</option>
+                <option value="драма">🎭 Драма</option>
+                <option value="боевик">💥 Боевик</option>
+                <option value="комедия">😂 Комедия</option>
+                <option value="фантастика">🚀 Фантастика</option>
+            </select>
+        </section>
+        <section id="moviesContainer" class="movies-grid"></section>
+    </main>
+
+    <main id="favoritesTab" class="tab-content" style="display: none">
+        <section id="favoritesContainer" class="movies-grid"></section>
+        <div id="favoritesEmpty" class="empty-message" style="display: none">
+            😢 У вас пока нет избранных фильмов
+        </div>
+    </main>
+
+    <main id="profileTab" class="tab-content" style="display: none">
+        <section class="profile-section">
+            <h2>📝 Мои отзывы и оценки</h2>
+            <div id="userReviewsContainer"></div>
+        </section>
+    </main>
+
+    <div id="movieModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p id="modalYearGenre" class="modal-year"></p>
+            <p class="modal-rating">
+                ⭐ Средний рейтинг: <span id="modalAvgRating">0</span>/10
+            </p>
+            <hr />
+            <h4>🎯 Моя оценка (1-10)</h4>
+            <div class="rating-input">
+                <input
+                    type="number"
+                    id="userRating"
+                    min="1"
+                    max="10"
+                    step="1"
+                    placeholder="10"
+                />
+                <button id="submitRatingBtn" class="btn btn-primary">
+                    ⭐ Оценить
+                </button>
+            </div>
+            <h4>💬 Мой отзыв</h4>
+            <textarea
+                id="userReview"
+                rows="3"
+                class="review-text"
+                placeholder="Напишите свой отзыв о фильме..."
+            ></textarea>
+            <button id="submitReviewBtn" class="btn btn-primary btn-full">
+                💾 Сохранить отзыв
+            </button>
+            <button id="addToFavModalBtn" class="btn btn-outline btn-full">
+                ❤️ Добавить в избранное
+            </button>
+            <p id="reviewStatus" class="status-message"></p>
+        </div>
+    </div>
+</body>
+</html>
