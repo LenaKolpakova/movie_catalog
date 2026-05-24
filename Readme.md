@@ -74,7 +74,42 @@
 
 ## ER-диаграмма базы данных
 
-![ER-диаграмма](./images/er_diagram.png)
+![ER-диаграмма](
+### Описание таблиц и ключей
+
+**Таблица `users`**
+- `user_id` (PRIMARY KEY) — ID пользователя
+- `username` — логин
+- `email` — почта
+
+**Таблица `movies`**
+- `movie_id` (PRIMARY KEY) — ID фильма
+- `title` — название фильма
+- `year` — год выпуска
+- `genre` — жанр
+
+**Таблица `reviews`**
+- `review_id` (PRIMARY KEY) — ID отзыва
+- `user_id` (FOREIGN KEY → users) — ID пользователя
+- `movie_id` (FOREIGN KEY → movies) — ID фильма
+- `rating` — оценка (1-10)
+- `review_text` — текст отзыва
+
+**Таблица `favorites`**
+- `favorite_id` (PRIMARY KEY) — ID записи
+- `user_id` (FOREIGN KEY → users) — ID пользователя
+- `movie_id` (FOREIGN KEY → movies) — ID фильма
+
+### Связи (1:M)
+
+| Связь | Тип | Пояснение |
+|-------|-----|-----------|
+| users → reviews | 1 : M | Один пользователь → много отзывов |
+| movies → reviews | 1 : M | Один фильм → много отзывов |
+| users → favorites | 1 : M | Один пользователь → много фильмов в избранном |
+| movies → favorites | 1 : M | Один фильм → у многих в избранном |
+
+**Связь M:N между users и movies** реализована через промежуточную таблицу `favorites`.
 
 **Описание связей:**
 - `users` → `reviews` : один пользователь может написать много отзывов (1:M)
@@ -99,9 +134,10 @@
 
 ---
 
-## SQL-запросы
+## 3. SQL-запросы
 
-### Запрос 1: SELECT с условием WHERE
+### Запрос 1: SELECT с WHERE
+
 **Задача:** Вывести все фильмы жанра «драма» с рейтингом выше 8.5
 
 ```sql
@@ -109,34 +145,3 @@ SELECT title, year, genre, avg_rating
 FROM movies
 WHERE genre = 'драма' AND avg_rating > 8.5
 ORDER BY avg_rating DESC;
-# Отчёт по УП.11 — Каталог фильмов с отзывами
-
-**Студент:** [твоё имя]
-**Группа:** [твоя группа]
-
----
-
-## 1. Структура таблиц
-
-![Список таблиц](./images/1_tables.png)
-
----
-
-## 2. Содержимое таблиц
-
-### Таблица `users`
-
-![Таблица users](./images/2_users_table.png)
-
-### Таблица `movies`
-
-![Таблица movies](./images/3_movies_table.png)
-
----
-
-## 3. SQL-запросы
-
-### Запрос 1: SELECT с WHERE
-
-```sql
-SELECT * FROM movies WHERE genre = 'драма';
