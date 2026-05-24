@@ -89,16 +89,13 @@
 ## Структура таблиц
 
 ### Таблица `users` (пользователи)
-![Таблица users](./images/table_users.png)
+![Таблица users](./images/Снимок%20экрана%202026-05-24%20в%2019.55.34.png)
 
 ### Таблица `movies` (фильмы)
-![Таблица movies](./images/table_movies.png)
+![Таблица movies](./images/Снимок%20экрана%202026-05-24%20в%2019.55.48.png)
 
 ### Таблица `reviews` (отзывы)
-![Таблица reviews](./images/table_reviews.png)
-
-### Таблица `favorites` (избранное)
-![Таблица favorites](./images/table_favorites.png)
+![Таблица reviews](./images/Снимок%20экрана%202026-05-24%20в%2019.56.50.png)
 
 ---
 
@@ -112,3 +109,34 @@ SELECT title, year, genre, avg_rating
 FROM movies
 WHERE genre = 'драма' AND avg_rating > 8.5
 ORDER BY avg_rating DESC;
+# Отчёт по УП.11 — Каталог фильмов с отзывами
+
+**Студент:** [твоё имя]
+**Группа:** [твоя группа]
+
+---
+
+## 1. Структура таблиц
+
+![Список таблиц](./images/1_tables.png)
+
+---
+
+## 2. Содержимое таблиц
+
+### Таблица `users`
+
+![Таблица users](./images/2_users_table.png)
+
+### Таблица `movies`
+
+![Таблица movies](./images/3_movies_table.png)
+
+---
+
+## 3. SQL-запросы
+
+### Запрос 1: SELECT с WHERE
+
+```sql
+SELECT * FROM movies WHERE genre = 'драма';
