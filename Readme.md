@@ -74,7 +74,19 @@
 
 ## ER-диаграмма базы данных
 
-![ER-диаграмма](
+**Таблицы и связи:**
+
+- users (1) → (M) reviews
+- movies (1) → (M) reviews  
+- users (1) → (M) favorites
+- movies (1) → (M) favorites
+
+**Ключи:**
+- PK: user_id, movie_id, review_id, favorite_id
+- FK: user_id, movie_id (в таблицах reviews и favorites)
+
+users и movies связаны как M:N через таблицу favorites.
+
 ### Описание таблиц и ключей
 
 **Таблица `users`**
